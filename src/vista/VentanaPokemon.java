@@ -1,7 +1,5 @@
 package vista;
 
-
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
@@ -13,7 +11,7 @@ public class VentanaPokemon extends JFrame
 	private final String imagePath = "resources/ventanaPokemon.png";
 
 	
-	public VentanaPokemon(String PokemonID)
+	public VentanaPokemon()
 	{
 		super("VentanaPokemon");
 		setSize(500,700);
@@ -23,7 +21,7 @@ public class VentanaPokemon extends JFrame
 		panelPokemon = new ImagePanel(imagePath, 500, 700);
 		
 		
-		add(getPokemonImg(PokemonID));
+		add(PokemonImg());
 		add(panelPokemon);
 		
 		
@@ -34,14 +32,19 @@ public class VentanaPokemon extends JFrame
 		return panelPokemon;
 	}
 	
-	public JLabel getPokemonImg(String PokemonID)
+	public JLabel PokemonImg()
 	{
                 
-		pokemonImg = new JLabel(new ImageIcon(new ImageIcon("resources/"+ PokemonID + ".png").getImage().getScaledInstance(230, 230, java.awt.Image.SCALE_SMOOTH)));
+		pokemonImg = new JLabel();
 		pokemonImg.setBounds(130, 20, 230, 230);
 		return pokemonImg;	
-		
 	}
+	
+	
+	public JLabel getPokemonImg() {
+		return pokemonImg;
+	}
+
 
 
 	public void setPokemonID(String pokemonID) 
