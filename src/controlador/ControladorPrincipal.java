@@ -1,10 +1,10 @@
 package controlador;
 
-import javax.swing.JOptionPane;
+
 import vista.VentanaLogin;
 import vista.VentanaPokedex;
 import vista.VentanaPokemon;
-import modelo.BDD;
+
 
 public final class ControladorPrincipal {
 

@@ -71,10 +71,10 @@ public class BDD {
         
         try {
            
-            ResultSet rs = stm.executeQuery("SELECT NOMBRE, CLAVE FROM USUARIOS WHERE NOMBRE = '" + username +"'" );
+            ResultSet rs = stm.executeQuery("SELECT USUARIO, CLAVE FROM CREDENCIALES WHERE USUARIO = '" + username +"'" );
             if(rs.next())
             {
-                this.username = rs.getString("NOMBRE");
+                this.username = rs.getString("USUARIO");
                 this.clave = rs.getString("CLAVE");
                 rs.close();
             }
