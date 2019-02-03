@@ -3,3 +3,6 @@ build.xml
 /dist
 /nbproject
 /libs
+/bin
+.classpath
+.project
