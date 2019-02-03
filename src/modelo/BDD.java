@@ -11,83 +11,145 @@ import java.util.logging.Logger;
 public class BDD {
 
 	private String username;
-    private String clave;
-    private final String bdUsername = "root";
-    private final String bdPassword = "";
-    public Connection conexion;
-    private final String driver = "com.mysql.cj.jdbc.Driver";
-    private final String url = "jdbc:mysql://localhost/pokedex?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+	private String clave;
+	private String pNombre;
+	private String pPeso;
+	private String pAltura;
+	private String pTipo;
+	private String pHP;
+	private String pAttack;
+	private String pDefense;
+	private final String bdUsername = "root";
+	private final String bdPassword = "";
+	public Connection conexion;
+	private final String driver = "com.mysql.cj.jdbc.Driver";
+	private final String url = "jdbc:mysql://localhost/pokedex?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 	private Statement stm;
 
-    public BDD() 
-    {
-        setDriver(driver);
-        try {
+	public BDD() {
+		setDriver(driver);
+		try {
 			setConnection(url, bdUsername, bdPassword);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-    }
+	}
 
-    public String getUsername() 
-    {
-        
-    	return username;
-    }
+	private void setDriver(String driver) {
+		try {
+			Class.forName(driver);
+		} catch (ClassNotFoundException ex) {
+			Logger.getLogger(BDD.class.getName()).log(Level.SEVERE, null, ex);
+		}
+	}
 
-    public String getClave()
-    {
-        
-    	return clave;
-    }
-    
-    
+	private void setConnection(String url, String username, String password) throws SQLException {
 
-    private void setDriver(String driver) {
-        try {
-            Class.forName(driver);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(BDD.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+		try {
+			conexion = DriverManager.getConnection(url, username, password);
+		} catch (SQLException ex) {
+			Logger.getLogger(BDD.class.getName()).log(Level.SEVERE, null, ex);
+		}
+	}
 
-    private void setConnection(String url, String username, String password) throws SQLException {
+	public void getCredenciales(String username) {
 
-        try {
-            conexion = DriverManager.getConnection(url, username, password);
-        } catch (SQLException ex) {
-            Logger.getLogger(BDD.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        stm = conexion.createStatement();
+		try {
 
-    }
-    
+			stm = conexion.createStatement();
+			ResultSet rs = stm
+					.executeQuery("SELECT USUARIO, CLAVE FROM CREDENCIALES WHERE USUARIO = '" + username + "'");
+			if (rs.next()) {
+				this.username = rs.getString("USUARIO");
+				this.clave = rs.getString("CLAVE");
+				stm.close();
+				rs.close();
+			} else {
+				this.username = null;
+				this.clave = null;
+				stm.close();
+				rs.close();
+			}
 
-    public void getCredenciales(String username)
-    {
-        
-        try {
-           
-            ResultSet rs = stm.executeQuery("SELECT NOMBRE, CLAVE FROM USUARIOS WHERE NOMBRE = '" + username +"'" );
-            if(rs.next())
-            {
-                this.username = rs.getString("NOMBRE");
-                this.clave = rs.getString("CLAVE");
-                rs.close();
-            }
-            else
-            {
-                this.username = null;
-                this.clave = null;
-            }
-            
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(BDD.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+		} catch (SQLException ex) {
+			Logger.getLogger(BDD.class.getName()).log(Level.SEVERE, null, ex);
+		}
+	}
 
+	public void getPokemonInfo(String pokemonID) {
+
+		try {
+			stm = conexion.createStatement();
+			ResultSet rs = stm.executeQuery(
+					"SELECT NOMBRE, PESO, ALTURA, HP, ATTACK, DEFENSE FROM POKEMON WHERE ID = '" + pokemonID + "'");
+			if (rs.next()) {
+				this.pNombre = rs.getString("NOMBRE");
+				this.pPeso = rs.getString("PESO");
+				this.pAltura = rs.getString("ALTURA");
+				this.pHP = rs.getString("HP");
+				this.pAttack = rs.getString("ATTACK");
+				this.pDefense = rs.getString("DEFENSE");
+				stm.close();
+				rs.close();
+			}
+
+		} catch (SQLException ex) {
+			Logger.getLogger(BDD.class.getName()).log(Level.SEVERE, null, ex);
+		}
+
+		try {
+			stm = conexion.createStatement();
+			ResultSet rs = stm.executeQuery(
+					"SELECT NOMBRE FROM TIPO WHERE ID = (SELECT TIPO FROM POKEMON WHERE ID = " + pokemonID + " )");
+			if (rs.next()) {
+				this.pTipo = rs.getString("NOMBRE");
+				stm.close();
+				rs.close();
+			}
+
+		} catch (SQLException ex) {
+			Logger.getLogger(BDD.class.getName()).log(Level.SEVERE, null, ex);
+		}
+
+	}
+
+
+	public String getUsername() {
+
+		return username;
+	}
+
+	public String getClave() {
+
+		return clave;
+	}
+
+	public String getpNombre() {
+		return pNombre;
+	}
+
+	public String getpPeso() {
+		return pPeso;
+	}
+
+	public String getpAltura() {
+		return pAltura;
+	}
+
+	public String getpTipo() {
+		return pTipo;
+	}
+
+	public String getpHP() {
+		return pHP;
+	}
+
+	public String getpAttack() {
+		return pAttack;
+	}
+
+	public String getpDefense() {
+		return pDefense;
+	}
 }

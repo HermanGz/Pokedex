@@ -2,24 +2,49 @@ package controlador;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
+import modelo.BDD;
 import vista.VentanaPokemon;
 
 public class ControladorPokemon extends controlador implements MouseListener {
 
 	VentanaPokemon vPokemon;
 	ControladorPrincipal cPrincipal;
+	BDD data;
 
-	public ControladorPokemon(String PokemonID) 
-        {
-                vPokemon = new VentanaPokemon(PokemonID);
+	public ControladorPokemon() {
+
+		vPokemon = new VentanaPokemon();
 		vPokemon.getPanelPokemon().addMouseListener(this);
+		data = new BDD();
 	}
 
 	public void SetcPrincipal(ControladorPrincipal cPrincipal) {
 		this.cPrincipal = cPrincipal;
+	}
+
+	public void setPokemon(String pokemonID) {
+		data.getPokemonInfo(pokemonID);
+
+		vPokemon.getPokemonImg().setIcon(new ImageIcon(new ImageIcon("resources/" + pokemonID + ".png").getImage()
+				.getScaledInstance(230, 230, java.awt.Image.SCALE_SMOOTH)));
+
+		vPokemon.getpokemonNombre().setText(data.getpNombre());
+
+		vPokemon.getpokemonNumero().setText(pokemonID);
+
+		vPokemon.getpokemonPeso().setText(data.getpPeso());
+		
+		vPokemon.getpokemonAltura().setText(data.getpAltura());
+		
+		vPokemon.getpokemonTipo().setText(data.getpTipo());
+		
+		vPokemon.getpokemonAttack().setText(data.getpAttack());
+		
+		vPokemon.getpokemonDefense().setText(data.getpDefense());
+
 	}
 
 	@Override
@@ -40,8 +65,7 @@ public class ControladorPokemon extends controlador implements MouseListener {
 	}
 
 	@Override
-	public void Notificar() 
-	{
+	public void Notificar() {
 		cPrincipal.VolverPokedex();
 	}
 

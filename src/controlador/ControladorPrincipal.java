@@ -1,52 +1,54 @@
 package controlador;
 
-import javax.swing.JOptionPane;
 import vista.VentanaLogin;
 import vista.VentanaPokedex;
 import vista.VentanaPokemon;
-import modelo.BDD;
 
 public final class ControladorPrincipal {
 
-    ControladorLogin cLogin;
-    ControladorPokedex cPokedex;
-    VentanaLogin vLogin;
-    VentanaPokedex vPokedex;
-    VentanaPokemon vPokemon;
-    ControladorPokemon cPokemon;
+	ControladorLogin cLogin;
+	ControladorPokedex cPokedex;
+	VentanaLogin vLogin;
+	VentanaPokedex vPokedex;
+	VentanaPokemon vPokemon;
+	ControladorPokemon cPokemon;
 
-    public void IniciarComponentes() {
-        cLogin = new ControladorLogin();
-        cPokedex = new ControladorPokedex();
-        cLogin.SetcPrincipal(this);
-        cPokedex.SetcPrincipal(this);
-        vLogin = cLogin.vLogin;
-        vPokedex = cPokedex.vPokedex;
-    }
+	public void IniciarComponentes() {
+		cLogin = new ControladorLogin();
+		cPokedex = new ControladorPokedex();
+		cPokemon = new ControladorPokemon();
 
-    public void ValidarLogin() {
-        if (cLogin.isLogSuccessfull()) {
-            vPokedex.setVisible(true);
-            vLogin.dispose();
-        }
-    }
+		cPokemon.SetcPrincipal(this);
+		cLogin.SetcPrincipal(this);
+		cPokedex.SetcPrincipal(this);
 
-    public void MostrarPokemon() {
-        String pokemon = cPokedex.getPokemon();
+		vLogin = cLogin.vLogin;
+		vPokedex = cPokedex.vPokedex;
+		vPokemon = cPokemon.vPokemon;
+	}
 
-        cPokemon = new ControladorPokemon(pokemon);
-        cPokemon.SetcPrincipal(this);
-        vPokemon = cPokemon.vPokemon;
+	public void ValidarLogin() {
+		if (cLogin.isLogSuccessfull()) {
+			vPokedex.setVisible(true);
+			vLogin.dispose();
+		}
+	}
 
-        vPokedex.setVisible(false);
-        vPokemon.setVisible(true);
-        System.out.println(pokemon);
-    }
+	public void MostrarPokemon() {
 
-    public void VolverPokedex() {
+		String pokemonID = cPokedex.getPokemon();
 
-        vPokedex.setVisible(true);
-        vPokemon.setVisible(false);
-        vPokemon.dispose();
-    }
+		cPokemon.setPokemon(pokemonID);
+
+		vPokedex.setVisible(false);
+		vPokemon.setVisible(true);
+		System.out.println(pokemonID);
+	}
+
+	public void VolverPokedex() {
+
+		vPokedex.setVisible(true);
+		vPokemon.setVisible(false);
+		vPokemon.dispose();
+	}
 }
