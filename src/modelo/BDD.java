@@ -35,7 +35,7 @@ public class BDD {
 		}
 
 	}
-	
+
 	private void setDriver(String driver) {
 		try {
 			Class.forName(driver);
@@ -53,13 +53,13 @@ public class BDD {
 		}
 	}
 
-
 	public void getCredenciales(String username) {
 
 		try {
 
 			stm = conexion.createStatement();
-			ResultSet rs = stm.executeQuery("SELECT USUARIO, CLAVE FROM CREDENCIALES WHERE USUARIO = '" + username + "'");
+			ResultSet rs = stm
+					.executeQuery("SELECT USUARIO, CLAVE FROM CREDENCIALES WHERE USUARIO = '" + username + "'");
 			if (rs.next()) {
 				this.username = rs.getString("USUARIO");
 				this.clave = rs.getString("CLAVE");
@@ -78,10 +78,11 @@ public class BDD {
 	}
 
 	public void getPokemonInfo(String pokemonID) {
-		
+
 		try {
 			stm = conexion.createStatement();
-			ResultSet rs = stm.executeQuery("SELECT NOMBRE, PESO, ALTURA, HP, ATTACK, DEFENSE FROM POKEMON WHERE ID = '" + pokemonID + "'");
+			ResultSet rs = stm.executeQuery(
+					"SELECT NOMBRE, PESO, ALTURA, HP, ATTACK, DEFENSE FROM POKEMON WHERE ID = '" + pokemonID + "'");
 			if (rs.next()) {
 				this.pNombre = rs.getString("NOMBRE");
 				this.pPeso = rs.getString("PESO");
@@ -96,10 +97,10 @@ public class BDD {
 		} catch (SQLException ex) {
 			Logger.getLogger(BDD.class.getName()).log(Level.SEVERE, null, ex);
 		}
-		
+
 		try {
 			stm = conexion.createStatement();
-			ResultSet rs = stm.executeQuery("SELECT NOMBRE FROM TIPO WHERE ID = '" + pokemonID + "'");
+			ResultSet rs = stm.executeQuery("SELECT NOMBRE FROM TIPO WHERE ID = (SELECT TIPO FROM POKEMON WHERE ID = " + pokemonID +" )");
 			if (rs.next()) {
 				this.pTipo = rs.getString("NOMBRE");
 				stm.close();
@@ -111,7 +112,7 @@ public class BDD {
 		}
 
 	}
-	
+
 	public String getUsername() {
 
 		return username;

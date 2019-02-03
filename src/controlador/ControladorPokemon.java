@@ -15,7 +15,7 @@ public class ControladorPokemon extends controlador implements MouseListener {
 	BDD data;
 
 	public ControladorPokemon() {
-		
+
 		vPokemon = new VentanaPokemon();
 		vPokemon.getPanelPokemon().addMouseListener(this);
 		data = new BDD();
@@ -25,18 +25,28 @@ public class ControladorPokemon extends controlador implements MouseListener {
 		this.cPrincipal = cPrincipal;
 	}
 
-	
-	public void setPokemon(String pokemonID)
-	{
-		
+	public void setPokemon(String pokemonID) {
 		data.getPokemonInfo(pokemonID);
+
+		vPokemon.getPokemonImg().setIcon(new ImageIcon(new ImageIcon("resources/" + pokemonID + ".png").getImage()
+				.getScaledInstance(230, 230, java.awt.Image.SCALE_SMOOTH)));
+
+		vPokemon.getpokemonNombre().setText(data.getpNombre());
+
+		vPokemon.getpokemonNumero().setText(pokemonID);
+
+		vPokemon.getpokemonPeso().setText(data.getpPeso());
 		
-		vPokemon.getPokemonImg().setIcon(new ImageIcon(new ImageIcon("resources/"+ pokemonID + ".png").getImage().getScaledInstance(230, 230, java.awt.Image.SCALE_SMOOTH)));
+		vPokemon.getpokemonAltura().setText(data.getpAltura());
 		
-		System.out.println(data.getpNombre() + "," + data.getpAltura() + "," + data.getpPeso() + "," + data.getpTipo() + "," + data.getpHP());
+		vPokemon.getpokemonTipo().setText(data.getpTipo());
+		
+		vPokemon.getpokemonAttack().setText(data.getpAttack());
+		
+		vPokemon.getpokemonDefense().setText(data.getpDefense());
+
 	}
 
-	
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		double posX = e.getPoint().getX();
