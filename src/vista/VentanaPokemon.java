@@ -113,8 +113,6 @@ public class VentanaPokemon extends JFrame {
 	}
 	
 	
-	
-	
 	public JLabel getPokemonImg() {
 		return pokemonImg;
 	}
@@ -154,7 +152,5 @@ public class VentanaPokemon extends JFrame {
 	public ImagePanel getPanelPokemon() {
 		return panelPokemon;
 	}
-	
-	
 
 }

@@ -35,7 +35,8 @@ public class VentanaPokedex extends JFrame {
 		jp.setBorder(BorderFactory.createMatteBorder(10, 10, 10, 10, getBackground().BLACK));
 		jp.setBackground(new Color(204, 204, 255));
 
-		for (int i = 1; i < 152; i++) {
+		for (int i = 1; i < 152 ; i++) {
+			
 			String a = String.valueOf(i);
 			JButton button = new JButton(new ImageIcon(((new ImageIcon("resources/" + a + ".PNG")).getImage())
 					.getScaledInstance(60, 60, java.awt.Image.SCALE_SMOOTH)));
@@ -53,4 +54,6 @@ public class VentanaPokedex extends JFrame {
 		scroll.getVerticalScrollBar().setUnitIncrement(16);
 		contenedor.add(scroll);
 	}
+	
+	
 }

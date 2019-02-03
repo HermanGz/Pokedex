@@ -10,6 +10,7 @@ public class PokedexMain
     {
         ControladorPrincipal cPrincipal = new ControladorPrincipal();
         cPrincipal.IniciarComponentes();
+        
     }
     
 }

@@ -100,7 +100,8 @@ public class BDD {
 
 		try {
 			stm = conexion.createStatement();
-			ResultSet rs = stm.executeQuery("SELECT NOMBRE FROM TIPO WHERE ID = (SELECT TIPO FROM POKEMON WHERE ID = " + pokemonID +" )");
+			ResultSet rs = stm.executeQuery(
+					"SELECT NOMBRE FROM TIPO WHERE ID = (SELECT TIPO FROM POKEMON WHERE ID = " + pokemonID + " )");
 			if (rs.next()) {
 				this.pTipo = rs.getString("NOMBRE");
 				stm.close();
@@ -112,6 +113,7 @@ public class BDD {
 		}
 
 	}
+
 
 	public String getUsername() {
 
