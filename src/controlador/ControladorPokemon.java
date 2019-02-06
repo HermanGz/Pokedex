@@ -36,13 +36,13 @@ public class ControladorPokemon extends controlador implements MouseListener {
 		vPokemon.pokemonNumero().setText(pokemonID);
 
 		vPokemon.pokemonPeso().setText(data.getpPeso());
-		
+
 		vPokemon.pokemonAltura().setText(data.getpAltura());
-		
+
 		vPokemon.pokemonTipo().setText(data.getpTipo());
-		
+
 		vPokemon.pokemonAttack().setText(data.getpAttack());
-		
+
 		vPokemon.pokemonDefense().setText(data.getpDefense());
 
 	}
