@@ -28,22 +28,22 @@ public class ControladorPokemon extends controlador implements MouseListener {
 	public void setPokemon(String pokemonID) {
 		data.getPokemonInfo(pokemonID);
 
-		vPokemon.getPokemonImg().setIcon(new ImageIcon(new ImageIcon("resources/" + pokemonID + ".png").getImage()
+		vPokemon.PokemonImg().setIcon(new ImageIcon(new ImageIcon("resources/" + pokemonID + ".png").getImage()
 				.getScaledInstance(230, 230, java.awt.Image.SCALE_SMOOTH)));
 
-		vPokemon.getpokemonNombre().setText(data.getpNombre());
+		vPokemon.pokemonNombre().setText(data.getpNombre());
 
-		vPokemon.getpokemonNumero().setText(pokemonID);
+		vPokemon.pokemonNumero().setText(pokemonID);
 
-		vPokemon.getpokemonPeso().setText(data.getpPeso());
+		vPokemon.pokemonPeso().setText(data.getpPeso());
 		
-		vPokemon.getpokemonAltura().setText(data.getpAltura());
+		vPokemon.pokemonAltura().setText(data.getpAltura());
 		
-		vPokemon.getpokemonTipo().setText(data.getpTipo());
+		vPokemon.pokemonTipo().setText(data.getpTipo());
 		
-		vPokemon.getpokemonAttack().setText(data.getpAttack());
+		vPokemon.pokemonAttack().setText(data.getpAttack());
 		
-		vPokemon.getpokemonDefense().setText(data.getpDefense());
+		vPokemon.pokemonDefense().setText(data.getpDefense());
 
 	}
 
