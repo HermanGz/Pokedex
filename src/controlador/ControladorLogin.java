@@ -4,10 +4,10 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import modelo.BDD;
+import java.security.NoSuchAlgorithmException;
 
 import vista.VentanaLogin;
 
@@ -22,13 +22,13 @@ public final class ControladorLogin extends controlador implements KeyListener, 
     public ControladorLogin() {
         vLogin = new VentanaLogin();
         vLogin.setVisible(true);
-        vLogin.GetBoxPassword().addKeyListener(this);
-        vLogin.GetBoxUsername().addKeyListener(this);
+        vLogin.getBoxPassword().addKeyListener(this);
+        vLogin.getBoxUsername().addKeyListener(this);
         vLogin.getpBackground().addMouseListener(this);
         data = new BDD();
     }
 
-    public void SetcPrincipal(ControladorPrincipal cPrincipal) {
+    public void setCPrincipal(ControladorPrincipal cPrincipal) {
         this.cPrincipal = cPrincipal;
     }
 
@@ -37,9 +37,9 @@ public final class ControladorLogin extends controlador implements KeyListener, 
     }
 
     @Override
-    public void Notificar() {
+    public void notificar() {
         if (cPrincipal != null) {
-            cPrincipal.ValidarLogin();
+            cPrincipal.validarLogin();
         }
     }
 
@@ -48,8 +48,8 @@ public final class ControladorLogin extends controlador implements KeyListener, 
         boolean isEnter = e.getKeyCode() == KeyEvent.VK_ENTER;
 
         if (isEnter) {
-            char[] password = vLogin.GetBoxPassword().getPassword();
-            String username = vLogin.GetBoxUsername().getText();
+            char[] password = vLogin.getBoxPassword().getPassword();
+            String username = vLogin.getBoxUsername().getText();
 
             data.getCredenciales(username);
 
@@ -65,7 +65,7 @@ public final class ControladorLogin extends controlador implements KeyListener, 
                         JOptionPane.ERROR_MESSAGE);
             } else {
                 logSuccessfull = true;
-                Notificar();
+                notificar();
             }
         }
     }
@@ -86,7 +86,7 @@ public final class ControladorLogin extends controlador implements KeyListener, 
     }
 
     @Override
-    public void mouseEntered(MouseEvent e) {     
+    public void mouseEntered(MouseEvent e) {
     }
 
     @Override
@@ -98,13 +98,13 @@ public final class ControladorLogin extends controlador implements KeyListener, 
     }
 
     @Override
-    public void mouseReleased(MouseEvent e) { 
+    public void mouseReleased(MouseEvent e) {
     }
-    
+
     @Override
     public void keyTyped(KeyEvent e) {
     }
-    
+
     @Override
     public void keyReleased(KeyEvent e) {
     }

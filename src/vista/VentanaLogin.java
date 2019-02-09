@@ -22,11 +22,11 @@ public final class VentanaLogin extends JFrame {
         pBackground = new ImagePanel(imagePath, 500, 700);
         add(pBackground);
 
-        pBackground.add(GetBoxUsername());
-        pBackground.add(GetBoxPassword());
+        pBackground.add(getBoxUsername());
+        pBackground.add(getBoxPassword());
     }
 
-    public JTextField GetBoxUsername() {
+    public JTextField getBoxUsername() {
         if (boxUsername == null) {
             boxUsername = new JTextField();
             boxUsername.setBounds(175, 541, 150, 18);
@@ -36,7 +36,7 @@ public final class VentanaLogin extends JFrame {
         return boxUsername;
     }
 
-    public JPasswordField GetBoxPassword() {
+    public JPasswordField getBoxPassword() {
         if (boxPassword == null) {
             boxPassword = new JPasswordField();
             boxPassword.setBounds(175, 615, 150, 18);

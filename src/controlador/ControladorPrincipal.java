@@ -13,28 +13,28 @@ public final class ControladorPrincipal {
     VentanaPokedex vPokedex;
     VentanaPokemon vPokemon;
 
-    public void IniciarComponentes() {
+    public void iniciarComponentes() {
         cLogin = new ControladorLogin();
         cPokedex = new ControladorPokedex();
         cPokemon = new ControladorPokemon();
 
-        cPokemon.SetcPrincipal(this);
-        cLogin.SetcPrincipal(this);
-        cPokedex.SetcPrincipal(this);
+        cPokemon.setCPrincipal(this);
+        cLogin.setCPrincipal(this);
+        cPokedex.setCPrincipal(this);
 
         vLogin = cLogin.vLogin;
         vPokedex = cPokedex.vPokedex;
         vPokemon = cPokemon.vPokemon;
     }
 
-    public void ValidarLogin() {
+    public void validarLogin() {
         if (cLogin.isLogSuccessfull()) {
             vPokedex.setVisible(true);
             vLogin.dispose();
         }
     }
 
-    public void MostrarPokemon() {
+    public void mostrarPokemon() {
 
         String pokemonID = cPokedex.getPokemon();
 
@@ -45,7 +45,7 @@ public final class ControladorPrincipal {
         System.out.println(pokemonID);
     }
 
-    public void VolverPokedex() {
+    public void volverPokedex() {
 
         vPokedex.setVisible(true);
         vPokemon.setVisible(false);
