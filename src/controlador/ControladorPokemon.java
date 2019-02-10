@@ -10,84 +10,84 @@ import vista.VentanaPokemon;
 
 public class ControladorPokemon extends controlador implements MouseListener {
 
-    VentanaPokemon vPokemon;
-    ControladorPrincipal cPrincipal;
-    BDD data;
+	VentanaPokemon vPokemon;
+	ControladorPrincipal cPrincipal;
+	BDD data;
 
-    public ControladorPokemon() {
+	public ControladorPokemon() {
 
-        vPokemon = new VentanaPokemon();
-        vPokemon.getPanelPokemon().addMouseListener(this);
-        data = new BDD();
-    }
+		vPokemon = new VentanaPokemon();
+		vPokemon.getPanelPokemon().addMouseListener(this);
+		data = new BDD();
+	}
 
-    public void setCPrincipal(ControladorPrincipal cPrincipal) {
-        this.cPrincipal = cPrincipal;
-    }
+	public void setCPrincipal(ControladorPrincipal cPrincipal) {
+		this.cPrincipal = cPrincipal;
+	}
 
-    public void setPokemon(String pokemonID) {
-        data.getPokemonInfo(pokemonID);
+	public void setPokemon(String pokemonID) {
+		data.getPokemonInfo(pokemonID);
 
-        vPokemon.pokemonImg().setIcon(new ImageIcon(new ImageIcon("resources/" + pokemonID + ".png").getImage()
-                .getScaledInstance(230, 230, java.awt.Image.SCALE_SMOOTH)));
+		vPokemon.pokemonImg().setIcon(new ImageIcon(new ImageIcon("resources/" + pokemonID + ".png").getImage()
+				.getScaledInstance(230, 230, java.awt.Image.SCALE_SMOOTH)));
 
-        vPokemon.pokemonNombre().setText(data.getpNombre());
+		vPokemon.pokemonNombre().setText(data.getpNombre());
 
-        vPokemon.pokemonNumero().setText(pokemonID);
+		vPokemon.pokemonNumero().setText(pokemonID);
 
-        vPokemon.pokemonPeso().setText(data.getpPeso());
+		vPokemon.pokemonPeso().setText(data.getpPeso());
 
-        vPokemon.pokemonAltura().setText(data.getpAltura());
+		vPokemon.pokemonAltura().setText(data.getpAltura());
 
-        vPokemon.pokemonTipo().setText(data.getpTipo());
+		vPokemon.pokemonTipo().setText(data.getpTipo());
 
-        vPokemon.pokemonAttack().setText(data.getpAttack());
+		vPokemon.pokemonAttack().setText(data.getpAttack());
 
-        vPokemon.pokemonDefense().setText(data.getpDefense());
+		vPokemon.pokemonDefense().setText(data.getpDefense());
 
-    }
+	}
 
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        double posX = e.getPoint().getX();
-        double posY = e.getPoint().getY();
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		double posX = e.getPoint().getX();
+		double posY = e.getPoint().getY();
 
-        if (posX > 434 && posX < 458 && posY > 26 && posY < 46) {
-            System.exit(0);
-        }
+		if (posX > 450 && posX < 478 && posY > 24 && posY < 45) {
+			System.exit(0);
+		}
 
-        if (posX > 381 && posX < 410 && posY > 32 && posY < 39) {
-            vPokemon.setState(JFrame.ICONIFIED);
-        }
-        if (posX > 25 && posX < 57 && posY > 31 && posY < 52) {
-            notificar();
-        }
-    }
+		if (posX > 383 && posX < 432 && posY > 29 && posY < 40) {
+			vPokemon.setState(JFrame.ICONIFIED);
+		}
+		if (posX > 32 && posX < 76 && posY > 26 && posY < 45) {
+			notificar();
+		}
+	}
 
-    @Override
-    public void notificar() {
-        cPrincipal.volverPokedex();
-    }
+	@Override
+	public void notificar() {
+		cPrincipal.volverPokedex();
+	}
 
-    @Override
-    public void mouseEntered(MouseEvent e) {
+	@Override
+	public void mouseEntered(MouseEvent e) {
 
-    }
+	}
 
-    @Override
-    public void mouseExited(MouseEvent e) {
+	@Override
+	public void mouseExited(MouseEvent e) {
 
-    }
+	}
 
-    @Override
-    public void mousePressed(MouseEvent e) {
+	@Override
+	public void mousePressed(MouseEvent e) {
 
-    }
+	}
 
-    @Override
-    public void mouseReleased(MouseEvent e) {
-        // TODO Auto-generated method stub
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
 
-    }
+	}
 
 }

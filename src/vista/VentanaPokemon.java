@@ -52,7 +52,7 @@ public class VentanaPokemon extends JFrame {
     public JLabel pokemonNombre() {
         if (pokemonNombre == null) {
             pokemonNombre = new JLabel("", SwingConstants.CENTER);
-            pokemonNombre.setBounds(180, 140, 300, 200);
+            pokemonNombre.setBounds(190, 165, 300, 200);
             pokemonNombre.setFont(new Font("Monospaced", 1, 50));
             pokemonNombre.setForeground(Color.BLACK);
         }
@@ -63,7 +63,7 @@ public class VentanaPokemon extends JFrame {
     public JLabel pokemonNumero() {
         if (pokemonNumero == null) {
             pokemonNumero = new JLabel(pokemonID, SwingConstants.CENTER);
-            pokemonNumero.setBounds(80, 140, 100, 200);
+            pokemonNumero.setBounds(85, 165, 100, 200);
             pokemonNumero.setFont(new Font("Monospaced", 1, 50));
             pokemonNumero.setForeground(Color.BLACK);
         }
@@ -74,8 +74,8 @@ public class VentanaPokemon extends JFrame {
     public JLabel pokemonPeso() {
         if (pokemonPeso == null) {
             pokemonPeso = new JLabel("", SwingConstants.CENTER);
-            pokemonPeso.setBounds(95, 298, 50, 50);
-            pokemonPeso.setFont(new Font("Monospaced", 1, 25));
+            pokemonPeso.setBounds(140, 410, 100, 100);
+            pokemonPeso.setFont(new Font("Monospaced", 1, 40));
             pokemonPeso.setForeground(Color.BLACK);
         }
 
@@ -85,8 +85,8 @@ public class VentanaPokemon extends JFrame {
     public JLabel pokemonAltura() {
         if (pokemonAltura == null) {
             pokemonAltura = new JLabel("", SwingConstants.CENTER);
-            pokemonAltura.setBounds(225, 298, 50, 50);
-            pokemonAltura.setFont(new Font("Monospaced", 1, 25));
+            pokemonAltura.setBounds(350, 410, 100, 100);
+            pokemonAltura.setFont(new Font("Monospaced", 1, 40));
             pokemonAltura.setForeground(Color.BLACK);
         }
 
@@ -96,8 +96,8 @@ public class VentanaPokemon extends JFrame {
     public JLabel pokemonTipo() {
         if (pokemonTipo == null) {
             pokemonTipo = new JLabel("", SwingConstants.CENTER);
-            pokemonTipo.setBounds(335, 298, 150, 50);
-            pokemonTipo.setFont(new Font("Monospaced", 1, 16));
+            pokemonTipo.setBounds(80, 298, 350, 50);
+            pokemonTipo.setFont(new Font("Monospaced", 1, 40));
             pokemonTipo.setForeground(Color.BLACK);
         }
 
@@ -107,8 +107,8 @@ public class VentanaPokemon extends JFrame {
     public JLabel pokemonAttack() {
         if (pokemonAttack == null) {
             pokemonAttack = new JLabel("", SwingConstants.CENTER);
-            pokemonAttack.setBounds(120, 400, 150, 50);
-            pokemonAttack.setFont(new Font("Monospaced", 1, 25));
+            pokemonAttack.setBounds(110, 530, 150, 50);
+            pokemonAttack.setFont(new Font("Monospaced", 1, 40));
             pokemonAttack.setForeground(Color.BLACK);
         }
         return pokemonAttack;
@@ -117,8 +117,8 @@ public class VentanaPokemon extends JFrame {
     public JLabel pokemonDefense() {
         if (pokemonDefense == null) {
             pokemonDefense = new JLabel("", SwingConstants.CENTER);
-            pokemonDefense.setBounds(290, 400, 150, 50);
-            pokemonDefense.setFont(new Font("Monospaced", 1, 25));
+            pokemonDefense.setBounds(320, 530, 150, 50);
+            pokemonDefense.setFont(new Font("Monospaced", 1, 40));
             pokemonDefense.setForeground(Color.BLACK);
         }
 
