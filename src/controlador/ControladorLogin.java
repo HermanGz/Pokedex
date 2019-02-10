@@ -7,7 +7,6 @@ import java.awt.event.MouseListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import modelo.BDD;
-import java.security.NoSuchAlgorithmException;
 
 import vista.VentanaLogin;
 
