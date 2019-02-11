@@ -27,15 +27,15 @@ public final class ControladorPokedex extends controlador implements ActionListe
     @Override
     public void actionPerformed(ActionEvent e) {
         pokemon = e.getActionCommand();
-        Notificar();
+        notificar();
     }
 
     @Override
-    public void Notificar() {
-        cPrincipal.MostrarPokemon();
+    public void notificar() {
+        cPrincipal.mostrarPokemon();
     }
 
-    public void SetcPrincipal(ControladorPrincipal cPrincipal) {
+    public void setCPrincipal(ControladorPrincipal cPrincipal) {
         this.cPrincipal = cPrincipal;
     }
 

@@ -26,16 +26,6 @@ public class BDD {
     private final String url = "jdbc:mysql://localhost/pokedex?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     private Statement stm;
 
-    public BDD() {
-        setDriver(driver);
-        try {
-            setConnection(url, bdUsername, bdPassword);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-    }
-
     private void setDriver(String driver) {
         try {
             Class.forName(driver);
@@ -44,10 +34,10 @@ public class BDD {
         }
     }
 
-    private void setConnection(String url, String username, String password) throws SQLException {
+    private void setConnection() throws SQLException {
 
         try {
-            conexion = DriverManager.getConnection(url, username, password);
+            conexion = DriverManager.getConnection(url, bdUsername, bdPassword);
         } catch (SQLException ex) {
             Logger.getLogger(BDD.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -56,7 +46,8 @@ public class BDD {
     public void getCredenciales(String username) {
 
         try {
-
+            setDriver(driver);
+            setConnection();
             stm = conexion.createStatement();
             ResultSet rs = stm
                     .executeQuery("SELECT USUARIO, CLAVE FROM CREDENCIALES WHERE USUARIO = '" + username + "'");
@@ -70,6 +61,7 @@ public class BDD {
                 this.clave = null;
                 stm.close();
                 rs.close();
+                conexion.close();
             }
 
         } catch (SQLException ex) {
@@ -80,9 +72,11 @@ public class BDD {
     public void getPokemonInfo(String pokemonID) {
 
         try {
+            setDriver(driver);
+            setConnection();
             stm = conexion.createStatement();
             ResultSet rs = stm.executeQuery(
-                    "SELECT NOMBRE, PESO, ALTURA, HP, ATTACK, DEFENSE FROM POKEMON WHERE ID = '" + pokemonID + "'");
+                    "SELECT NOMBRE, PESO, ALTURA, ATTACK, DEFENSE FROM POKEMON WHERE ID = '" + pokemonID + "'");
             if (rs.next()) {
                 this.pNombre = rs.getString("NOMBRE");
                 this.pPeso = rs.getString("PESO");
@@ -111,17 +105,25 @@ public class BDD {
             Logger.getLogger(BDD.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+        try {
+            conexion.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(BDD.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public int cantidadPokemones() {
 
         try {
+            setDriver(driver);
+            setConnection();
             stm = conexion.createStatement();
             ResultSet rs = stm.executeQuery("SELECT COUNT(ID) AS CANTIDAD FROM POKEMON");
             if (rs.next()) {
                 cantidadPokemon = rs.getInt("CANTIDAD");
                 stm.close();
                 rs.close();
+                conexion.close();
             }
         } catch (SQLException ex) {
             Logger.getLogger(BDD.class.getName()).log(Level.SEVERE, null, ex);

@@ -21,14 +21,14 @@ public class ControladorPokemon extends controlador implements MouseListener {
 		data = new BDD();
 	}
 
-	public void SetcPrincipal(ControladorPrincipal cPrincipal) {
+	public void setCPrincipal(ControladorPrincipal cPrincipal) {
 		this.cPrincipal = cPrincipal;
 	}
 
 	public void setPokemon(String pokemonID) {
 		data.getPokemonInfo(pokemonID);
 
-		vPokemon.PokemonImg().setIcon(new ImageIcon(new ImageIcon("resources/" + pokemonID + ".png").getImage()
+		vPokemon.pokemonImg().setIcon(new ImageIcon(new ImageIcon("resources/" + pokemonID + ".png").getImage()
 				.getScaledInstance(230, 230, java.awt.Image.SCALE_SMOOTH)));
 
 		vPokemon.pokemonNombre().setText(data.getpNombre());
@@ -36,13 +36,13 @@ public class ControladorPokemon extends controlador implements MouseListener {
 		vPokemon.pokemonNumero().setText(pokemonID);
 
 		vPokemon.pokemonPeso().setText(data.getpPeso());
-		
+
 		vPokemon.pokemonAltura().setText(data.getpAltura());
-		
+
 		vPokemon.pokemonTipo().setText(data.getpTipo());
-		
+
 		vPokemon.pokemonAttack().setText(data.getpAttack());
-		
+
 		vPokemon.pokemonDefense().setText(data.getpDefense());
 
 	}
@@ -52,21 +52,21 @@ public class ControladorPokemon extends controlador implements MouseListener {
 		double posX = e.getPoint().getX();
 		double posY = e.getPoint().getY();
 
-		if (posX > 434 && posX < 458 && posY > 26 && posY < 46) {
+		if (posX > 450 && posX < 478 && posY > 24 && posY < 45) {
 			System.exit(0);
 		}
 
-		if (posX > 381 && posX < 410 && posY > 32 && posY < 39) {
+		if (posX > 383 && posX < 432 && posY > 29 && posY < 40) {
 			vPokemon.setState(JFrame.ICONIFIED);
 		}
-		if (posX > 25 && posX < 57 && posY > 31 && posY < 52) {
-			Notificar();
+		if (posX > 32 && posX < 76 && posY > 26 && posY < 45) {
+			notificar();
 		}
 	}
 
 	@Override
-	public void Notificar() {
-		cPrincipal.VolverPokedex();
+	public void notificar() {
+		cPrincipal.volverPokedex();
 	}
 
 	@Override
