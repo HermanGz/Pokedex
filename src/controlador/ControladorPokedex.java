@@ -27,12 +27,14 @@ public final class ControladorPokedex extends controlador implements ActionListe
     @Override
     public void actionPerformed(ActionEvent e) {
         pokemon = e.getActionCommand();
-        notificar();
+        notificar("MostrarPokemon");
     }
 
     @Override
-    public void notificar() {
-        cPrincipal.mostrarPokemon();
+    public void notificar(String origen) {
+        if (origen.equals("MostrarPokemon")) {
+            cPrincipal.mostrarPokemon();
+        }
     }
 
     public void setCPrincipal(ControladorPrincipal cPrincipal) {
@@ -43,21 +45,18 @@ public final class ControladorPokedex extends controlador implements ActionListe
         return pokemon;
     }
 
-    public int cantidadFilas()
-    {
-      int cantidadTmp = data.cantidadPokemones();
-      int cantidadFilas;
-        if (cantidadTmp%5 == 0) {
-            cantidadFilas = (cantidadTmp/5);
-        }
-        else{
-            cantidadFilas = (cantidadTmp/5) + 1 ;
+    public int cantidadFilas() {
+        int cantidadTmp = data.cantidadPokemones();
+        int cantidadFilas;
+        if (cantidadTmp % 5 == 0) {
+            cantidadFilas = (cantidadTmp / 5);
+        } else {
+            cantidadFilas = (cantidadTmp / 5) + 1;
         }
         return cantidadFilas;
     }
-    
-    public int cantidadPokemones()
-    {
+
+    public int cantidadPokemones() {
         int cantidadPokemones = data.cantidadPokemones();
         return cantidadPokemones;
     }

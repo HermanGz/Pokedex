@@ -1,6 +1,7 @@
 package pokedex;
 
 import controlador.ControladorPrincipal;
+import vista.VentanaRegistro;
 
 public class PokedexMain {
 
@@ -8,7 +9,7 @@ public class PokedexMain {
 
 		ControladorPrincipal cPrincipal = new ControladorPrincipal();
 		cPrincipal.iniciarComponentes();
-
+                
 	}
 
 }
