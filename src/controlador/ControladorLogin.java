@@ -1,6 +1,7 @@
 package controlador;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
@@ -41,10 +42,10 @@ public final class ControladorLogin extends controlador implements KeyListener, 
     @Override
     public void notificar(String origen) {
         if (origen.equals("Login")) {
-            
+
             cPrincipal.validarLogin();
         }
-        
+
         if (origen.equals("Registro")) {
             cPrincipal.ventanaRegistro();
         }
@@ -118,7 +119,8 @@ public final class ControladorLogin extends controlador implements KeyListener, 
         if (comando != null) {
 
             if (comando.equals("!Registrate Aqui¡")) {
-
+                Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
+                vLogin.setCursor(cursor);
                 vLogin.getLinkRegistro().setForeground(Color.BLUE);
             }
         }
@@ -137,6 +139,8 @@ public final class ControladorLogin extends controlador implements KeyListener, 
 
             if (comando.equals("!Registrate Aqui¡")) {
 
+                Cursor cursor = new Cursor(Cursor.DEFAULT_CURSOR);
+                vLogin.setCursor(cursor);
                 vLogin.getLinkRegistro().setForeground(Color.WHITE);
             }
         }

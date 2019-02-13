@@ -26,6 +26,7 @@ public class BDD {
     private final String driver = "com.mysql.cj.jdbc.Driver";
     private final String url = "jdbc:mysql://localhost/pokedex?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     private Statement stm;
+    private boolean registroSuccess;
 
     private void setDriver(String driver) {
         try {
@@ -157,12 +158,13 @@ public class BDD {
                 stm.executeUpdate("INSERT INTO credenciales (USUARIO,CLAVE,CORREO) VALUES ('" + pseudonimo + "','" + clave + "','" + correo + "')");
                 stm.close();
                 conexion.close();
+                registroSuccess = true;
             } catch (SQLException ex) {
                 Logger.getLogger(BDD.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         } else {
-            JOptionPane.showMessageDialog(null, "Usario Ya Existe", null, 0);
+            registroSuccess = false;
         }
     }
 
@@ -198,5 +200,9 @@ public class BDD {
 
     public String getpDefense() {
         return pDefense;
+    }
+
+    public boolean getRegistroSuccess() {
+        return registroSuccess;
     }
 }

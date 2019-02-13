@@ -18,6 +18,7 @@ public class ControladorRegistro extends controlador implements MouseListener, A
     String correo;
     String clave;
     String clave2;
+    boolean registroSuccess;
 
     public ControladorRegistro() {
         data = new BDD();
@@ -31,6 +32,10 @@ public class ControladorRegistro extends controlador implements MouseListener, A
 
     public void setCPrincipal(ControladorPrincipal cPrincipal) {
         this.cPrincipal = cPrincipal;
+    }
+
+    public boolean getRegistroSuccess() {
+        return registroSuccess;
     }
 
     public void registrarUsuario() {
@@ -50,13 +55,20 @@ public class ControladorRegistro extends controlador implements MouseListener, A
             JOptionPane.showMessageDialog(null, "Claves ingresadas no sin iguales", null, 0);
         } else if (clave.equals(clave2) && pseudonimo != null && correo != null) {
             data.registrarUsuario(pseudonimo, correo, clave);
+            notificar("ValidarRegistro");
         }
+
     }
 
     @Override
     public void notificar(String origen) {
         if (origen.equals("VolverLogin")) {
             cPrincipal.volverLogin();
+        }
+
+        if (origen.equals("ValidarRegistro")) {
+            registroSuccess = data.getRegistroSuccess();
+            cPrincipal.validarRegistro();
         }
     }
 

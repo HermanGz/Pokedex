@@ -40,7 +40,7 @@ public class VentanaRegistro extends JFrame {
         if (pseudonimoBox == null) {
 
             pseudonimoBox = new JTextField(32);
-            pseudonimoBox.setBounds(127, 397, 230,15);
+            pseudonimoBox.setBounds(127, 397, 230, 15);
             pseudonimoBox.setBorder(BorderFactory.createEmptyBorder());
             placeHolder = new TextPrompt("Pseudonimo", pseudonimoBox);
             placeHolder.changeAlpha(0.75f);
@@ -48,12 +48,12 @@ public class VentanaRegistro extends JFrame {
         }
         return pseudonimoBox;
     }
-    
+
     public JTextField getCorreoBox() {
         if (correoBox == null) {
 
             correoBox = new JTextField(32);
-            correoBox.setBounds(125, 455, 230,15);
+            correoBox.setBounds(125, 455, 230, 15);
             correoBox.setBorder(BorderFactory.createEmptyBorder());
             placeHolder = new TextPrompt("Correo Electronico", correoBox);
             placeHolder.changeAlpha(0.75f);
@@ -61,12 +61,12 @@ public class VentanaRegistro extends JFrame {
         }
         return correoBox;
     }
-    
+
     public JPasswordField getClaveBox() {
         if (claveBox == null) {
 
             claveBox = new JPasswordField();
-            claveBox.setBounds(125, 514, 230,15);
+            claveBox.setBounds(125, 514, 230, 15);
             claveBox.setBorder(BorderFactory.createEmptyBorder());
             placeHolder = new TextPrompt("Ingresar Clave", claveBox);
             placeHolder.changeAlpha(0.75f);
@@ -74,12 +74,12 @@ public class VentanaRegistro extends JFrame {
         }
         return claveBox;
     }
-    
+
     public JPasswordField getClaveBox2() {
         if (claveBox2 == null) {
 
             claveBox2 = new JPasswordField();
-            claveBox2.setBounds(125, 573, 230,15);
+            claveBox2.setBounds(125, 573, 230, 15);
             claveBox2.setBorder(BorderFactory.createEmptyBorder());
             placeHolder = new TextPrompt("Ingresar Clave Nuevamente", claveBox2);
             placeHolder.changeAlpha(0.75f);
@@ -87,8 +87,5 @@ public class VentanaRegistro extends JFrame {
         }
         return claveBox2;
     }
-    
-    
-    
-    
+
 }

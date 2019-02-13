@@ -4,10 +4,9 @@ import controlador.ControladorPrincipal;
 
 public class PokedexMain {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-		ControladorPrincipal cPrincipal = new ControladorPrincipal();
-		cPrincipal.iniciarComponentes();       
-	}
-
+        ControladorPrincipal cPrincipal = new ControladorPrincipal();
+        cPrincipal.iniciarComponentes();
+    }
 }
