@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class BDD {
 
@@ -129,6 +130,40 @@ public class BDD {
             Logger.getLogger(BDD.class.getName()).log(Level.SEVERE, null, ex);
         }
         return cantidadPokemon;
+    }
+
+    public void registrarUsuario(String pseudonimo, String correo, String clave) {
+
+        int ID = 0;
+
+        try {
+            setDriver(driver);
+            setConnection();
+            stm = conexion.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT ID FROM CREDENCIALES WHERE USUARIO ='" + pseudonimo + "'");
+            if (rs.next()) {
+                ID = rs.getInt("ID");
+            }
+            stm.close();
+            conexion.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(BDD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if (ID == 0) {
+            try {
+                setDriver(driver);
+                setConnection();
+                stm = conexion.createStatement();
+                stm.executeUpdate("INSERT INTO credenciales (USUARIO,CLAVE,CORREO) VALUES ('" + pseudonimo + "','" + clave + "','" + correo + "')");
+                stm.close();
+                conexion.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(BDD.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Usario Ya Existe", null, 0);
+        }
     }
 
     public String getUsername() {

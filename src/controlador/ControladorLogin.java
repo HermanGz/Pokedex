@@ -1,10 +1,12 @@
 package controlador;
 
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import modelo.BDD;
 
@@ -24,6 +26,7 @@ public final class ControladorLogin extends controlador implements KeyListener, 
         vLogin.getBoxPassword().addKeyListener(this);
         vLogin.getBoxUsername().addKeyListener(this);
         vLogin.getpBackground().addMouseListener(this);
+        vLogin.getLinkRegistro().addMouseListener(this);
         data = new BDD();
     }
 
@@ -36,9 +39,14 @@ public final class ControladorLogin extends controlador implements KeyListener, 
     }
 
     @Override
-    public void notificar() {
-        if (cPrincipal != null) {
+    public void notificar(String origen) {
+        if (origen.equals("Login")) {
+            
             cPrincipal.validarLogin();
+        }
+        
+        if (origen.equals("Registro")) {
+            cPrincipal.ventanaRegistro();
         }
     }
 
@@ -64,7 +72,7 @@ public final class ControladorLogin extends controlador implements KeyListener, 
                         JOptionPane.ERROR_MESSAGE);
             } else {
                 logSuccessfull = true;
-                notificar();
+                notificar("Login");
             }
         }
     }
@@ -73,6 +81,7 @@ public final class ControladorLogin extends controlador implements KeyListener, 
     public void mouseClicked(MouseEvent e) {
         double posX = e.getPoint().getX();
         double posY = e.getPoint().getY();
+        String comando = null;
 
         if (posX > 455 && posX < 470 && posY > 27 && posY < 42) {
             System.exit(0);
@@ -82,14 +91,56 @@ public final class ControladorLogin extends controlador implements KeyListener, 
             vLogin.setState(JFrame.ICONIFIED);
         }
 
+        try {
+            comando = ((JLabel) e.getSource()).getName();
+        } catch (RuntimeException error) {
+        }
+
+        if (comando != null) {
+
+            if (comando.equals("!Registrate Aqui¡")) {
+
+                notificar("Registro");
+            }
+        }
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
+
+        String comando = null;
+        try {
+            comando = ((JLabel) e.getSource()).getName();
+        } catch (RuntimeException error) {
+            //No hace nada
+        }
+
+        if (comando != null) {
+
+            if (comando.equals("!Registrate Aqui¡")) {
+
+                vLogin.getLinkRegistro().setForeground(Color.BLUE);
+            }
+        }
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
+        String comando = null;
+        try {
+            comando = ((JLabel) e.getSource()).getName();
+        } catch (RuntimeException error) {
+            //Sin Hacer nada
+        }
+
+        if (comando != null) {
+
+            if (comando.equals("!Registrate Aqui¡")) {
+
+                vLogin.getLinkRegistro().setForeground(Color.WHITE);
+            }
+        }
+
     }
 
     @Override
@@ -107,4 +158,5 @@ public final class ControladorLogin extends controlador implements KeyListener, 
     @Override
     public void keyReleased(KeyEvent e) {
     }
+
 }
