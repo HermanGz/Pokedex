@@ -2,12 +2,12 @@ package vista;
 
 import javax.swing.JFrame;
 
-public class ventanaRegistro extends JFrame {
+public class VentanaRegistro extends JFrame {
 
 	ImagePanel panelRegistro;
 	private final String imgPath = "resources/ventanaRegistro.png";
 
-	public ventanaRegistro() {
+	public VentanaRegistro() {
 		super("Registro");
 		setSize(500, 700);
 		setLocationRelativeTo(null);
