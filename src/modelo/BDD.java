@@ -20,7 +20,7 @@ public class BDD {
     private String pAttack;
     private String pDefense;
     private int cantidadPokemon;
-    private final String bdUsername = "root";
+    private final String bdUsername = "Tactica-PC";
     private final String bdPassword = "";
     public Connection conexion;
     private final String driver = "com.mysql.cj.jdbc.Driver";

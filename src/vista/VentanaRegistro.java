@@ -1,44 +1,25 @@
 package vista;
 
-import java.awt.Font;
-import javax.swing.BorderFactory;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
 
 public class VentanaRegistro extends JFrame {
 
-    ImagePanel panelRegistro;
-    JTextField pseudonimoBox;
-    JTextField correoBox;
-    JPasswordField claveBox;
-    JPasswordField claveBox2;
-    private final String imgPath = "resources/ventanaRegistro.png";
-    TextPrompt placeHolder;
+	ImagePanel panelRegistro;
+	private final String imgPath = "resources/ventanaRegistro.png";
 
-    public VentanaRegistro() {
-        super("Registro");
-        setSize(500, 700);
-        setLocationRelativeTo(null);
-        setUndecorated(true);
+	public VentanaRegistro() {
+		super("Registro");
+		setSize(500, 700);
+		setLocationRelativeTo(null);
+		setUndecorated(true);
 
-        panelRegistro = new ImagePanel(imgPath, 500, 700);
-        panelRegistro.add(getPseudonimoBox());
-        panelRegistro.add(getCorreoBox());
-        panelRegistro.add(getClaveBox());
-        panelRegistro.add(getClaveBox2());
-        add(panelRegistro);
-    }
+		panelRegistro = new ImagePanel(imgPath, 500, 700);
 
-    public ImagePanel getPanelRegistro() {
-        return panelRegistro;
-    }
+		add(panelRegistro);
 
-    public JTextField getPseudonimoBox() {
-        if (pseudonimoBox == null) {
+	}
 
+<<<<<<< HEAD
             pseudonimoBox = new JTextField(32);
             pseudonimoBox.setBounds(127, 397, 230, 15);
             pseudonimoBox.setBorder(BorderFactory.createEmptyBorder());
@@ -88,4 +69,6 @@ public class VentanaRegistro extends JFrame {
         return claveBox2;
     }
 
+=======
+>>>>>>> 43e70796bb54786081eeac0c7ec2a509beea8850
 }
