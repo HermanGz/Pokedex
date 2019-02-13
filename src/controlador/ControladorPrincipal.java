@@ -18,9 +18,9 @@ public final class ControladorPrincipal {
 
     public void iniciarComponentes() {
         cLogin = new ControladorLogin();
+        cRegistro = new ControladorRegistro();
         cPokedex = new ControladorPokedex();
         cPokemon = new ControladorPokemon();
-        cRegistro = new ControladorRegistro();
 
         cPokemon.setCPrincipal(this);
         cLogin.setCPrincipal(this);
@@ -30,7 +30,6 @@ public final class ControladorPrincipal {
         vLogin = cLogin.vLogin;
         vPokedex = cPokedex.vPokedex;
         vPokemon = cPokemon.vPokemon;
-        vRegistro = cRegistro.vRegistro;
 
     }
 
@@ -44,12 +43,9 @@ public final class ControladorPrincipal {
     public void mostrarPokemon() {
 
         String pokemonID = cPokedex.getPokemon();
-
         cPokemon.setPokemon(pokemonID);
-
         vPokedex.setVisible(false);
         vPokemon.setVisible(true);
-        System.out.println(pokemonID);
     }
 
     public void volverPokedex() {
@@ -60,12 +56,16 @@ public final class ControladorPrincipal {
     }
 
     public void ventanaRegistro() {
+
+        cRegistro.iniciarVRegistro();
+        vRegistro = cRegistro.vRegistro;
         vRegistro.setVisible(true);
         vLogin.setVisible(false);
     }
 
     public void volverLogin() {
-        vRegistro.setVisible(false);
+        vRegistro.dispose();
         vLogin.setVisible(true);
     }
+
 }

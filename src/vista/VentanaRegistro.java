@@ -5,6 +5,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 public class VentanaRegistro extends JFrame {
@@ -12,8 +13,8 @@ public class VentanaRegistro extends JFrame {
     ImagePanel panelRegistro;
     JTextField pseudonimoBox;
     JTextField correoBox;
-    JTextField claveBox;
-    JTextField claveBox2;
+    JPasswordField claveBox;
+    JPasswordField claveBox2;
     private final String imgPath = "resources/ventanaRegistro.png";
     TextPrompt placeHolder;
 
@@ -24,7 +25,7 @@ public class VentanaRegistro extends JFrame {
         setUndecorated(true);
 
         panelRegistro = new ImagePanel(imgPath, 500, 700);
-        panelRegistro.add(getNombreBox());
+        panelRegistro.add(getPseudonimoBox());
         panelRegistro.add(getCorreoBox());
         panelRegistro.add(getClaveBox());
         panelRegistro.add(getClaveBox2());
@@ -35,7 +36,7 @@ public class VentanaRegistro extends JFrame {
         return panelRegistro;
     }
 
-    public JTextField getNombreBox() {
+    public JTextField getPseudonimoBox() {
         if (pseudonimoBox == null) {
 
             pseudonimoBox = new JTextField(32);
@@ -61,10 +62,10 @@ public class VentanaRegistro extends JFrame {
         return correoBox;
     }
     
-    public JTextField getClaveBox() {
+    public JPasswordField getClaveBox() {
         if (claveBox == null) {
 
-            claveBox = new JTextField(32);
+            claveBox = new JPasswordField();
             claveBox.setBounds(125, 514, 230,15);
             claveBox.setBorder(BorderFactory.createEmptyBorder());
             placeHolder = new TextPrompt("Ingresar Clave", claveBox);
@@ -74,10 +75,10 @@ public class VentanaRegistro extends JFrame {
         return claveBox;
     }
     
-    public JTextField getClaveBox2() {
+    public JPasswordField getClaveBox2() {
         if (claveBox2 == null) {
 
-            claveBox2 = new JTextField(32);
+            claveBox2 = new JPasswordField();
             claveBox2.setBounds(125, 573, 230,15);
             claveBox2.setBorder(BorderFactory.createEmptyBorder());
             placeHolder = new TextPrompt("Ingresar Clave Nuevamente", claveBox2);
