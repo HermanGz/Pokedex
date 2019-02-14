@@ -1,32 +1,41 @@
 package vista;
 
+import java.awt.Font;
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 public class VentanaRegistro extends JFrame {
 
-	ImagePanel panelRegistro;
-	private final String imgPath = "resources/ventanaRegistro.png";
+    ImagePanel panelRegistro;
+    private final String imgPath = "resources/ventanaRegistro.png";
+    JTextField pseudonimoBox;
+    JTextField correoBox;
+    JPasswordField claveBox;
+    JPasswordField claveBox2;
+    TextPrompt placeHolder;
 
-	public VentanaRegistro() {
-		super("Registro");
-		setSize(500, 700);
-		setLocationRelativeTo(null);
-		setUndecorated(true);
+    public VentanaRegistro() {
+        super("Registro");
+        setSize(500, 700);
+        setLocationRelativeTo(null);
+        setUndecorated(true);
 
-		panelRegistro = new ImagePanel(imgPath, 500, 700);
+        panelRegistro = new ImagePanel(imgPath, 500, 700);
 
-		add(panelRegistro);
+        add(panelRegistro);
 
-	}
+    }
 
-<<<<<<< HEAD
-            pseudonimoBox = new JTextField(32);
-            pseudonimoBox.setBounds(127, 397, 230, 15);
-            pseudonimoBox.setBorder(BorderFactory.createEmptyBorder());
-            placeHolder = new TextPrompt("Pseudonimo", pseudonimoBox);
-            placeHolder.changeAlpha(0.75f);
-            placeHolder.changeStyle(Font.ITALIC);
-        }
+    public JTextField getPseudonimoBox() {
+        pseudonimoBox = new JTextField(32);
+        pseudonimoBox.setBounds(127, 397, 230, 15);
+        pseudonimoBox.setBorder(BorderFactory.createEmptyBorder());
+        placeHolder = new TextPrompt("Pseudonimo", pseudonimoBox);
+        placeHolder.changeAlpha(0.75f);
+        placeHolder.changeStyle(Font.ITALIC);
+
         return pseudonimoBox;
     }
 
@@ -68,7 +77,10 @@ public class VentanaRegistro extends JFrame {
         }
         return claveBox2;
     }
+    
+    public ImagePanel getPanelRegistro()
+    {
+        return panelRegistro;
+    }
 
-=======
->>>>>>> 43e70796bb54786081eeac0c7ec2a509beea8850
 }
