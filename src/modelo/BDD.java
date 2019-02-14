@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class BDD {
 
@@ -25,6 +26,7 @@ public class BDD {
     private final String driver = "com.mysql.cj.jdbc.Driver";
     private final String url = "jdbc:mysql://localhost/pokedex?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     private Statement stm;
+    private boolean registroSuccess;
 
     private void setDriver(String driver) {
         try {
@@ -131,6 +133,41 @@ public class BDD {
         return cantidadPokemon;
     }
 
+    public void registrarUsuario(String pseudonimo, String correo, String clave) {
+
+        int ID = 0;
+
+        try {
+            setDriver(driver);
+            setConnection();
+            stm = conexion.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT ID FROM CREDENCIALES WHERE USUARIO ='" + pseudonimo + "'");
+            if (rs.next()) {
+                ID = rs.getInt("ID");
+            }
+            stm.close();
+            conexion.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(BDD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if (ID == 0) {
+            try {
+                setDriver(driver);
+                setConnection();
+                stm = conexion.createStatement();
+                stm.executeUpdate("INSERT INTO credenciales (USUARIO,CLAVE,CORREO) VALUES ('" + pseudonimo + "','" + clave + "','" + correo + "')");
+                stm.close();
+                conexion.close();
+                registroSuccess = true;
+            } catch (SQLException ex) {
+                Logger.getLogger(BDD.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        } else {
+            registroSuccess = false;
+        }
+    }
+
     public String getUsername() {
 
         return username;
@@ -163,5 +200,9 @@ public class BDD {
 
     public String getpDefense() {
         return pDefense;
+    }
+
+    public boolean getRegistroSuccess() {
+        return registroSuccess;
     }
 }
