@@ -52,7 +52,6 @@ public final class VentanaLogin extends JFrame {
 
     public JLabel getLinkRegistro() {
         if (linkRegistro == null) {
-            linkRegistro = new JLabel("!Registrate Aqui¡");
             linkRegistro.setName("!Registrate Aqui¡");
             linkRegistro.setBounds(185, 650, 150, 20);
             linkRegistro.setBorder(BorderFactory.createEmptyBorder());
