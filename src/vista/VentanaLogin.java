@@ -14,6 +14,7 @@ public final class VentanaLogin extends JFrame {
     private JPasswordField boxPassword;
     private JLabel linkRegistro;
     private final ImagePanel pBackground;
+    TextPrompt placeHolder;
     private final String imagePath = "resources/ventanaLogin.png";
 
     public VentanaLogin() {
@@ -34,9 +35,13 @@ public final class VentanaLogin extends JFrame {
     public JTextField getBoxUsername() {
         if (boxUsername == null) {
             boxUsername = new JTextField();
-            boxUsername.setBounds(175, 541, 150, 18);
-            boxUsername.setFont(new Font("Helvetica", Font.BOLD, 13));
+            boxUsername.setBounds(185, 510, 150, 17);
             boxUsername.setBorder(BorderFactory.createEmptyBorder());
+            placeHolder = new TextPrompt("Pseudonimo", boxUsername);
+            placeHolder.changeAlpha(0.75f);
+            placeHolder.changeStyle(Font.ITALIC);
+            
+            
         }
         return boxUsername;
     }
@@ -44,15 +49,19 @@ public final class VentanaLogin extends JFrame {
     public JPasswordField getBoxPassword() {
         if (boxPassword == null) {
             boxPassword = new JPasswordField();
-            boxPassword.setBounds(175, 615, 150, 18);
+            boxPassword.setBounds(185, 585, 150, 17);
             boxPassword.setBorder(BorderFactory.createEmptyBorder());
+            placeHolder = new TextPrompt("Password", boxPassword);
+            placeHolder.changeAlpha(0.75f);
+            placeHolder.changeStyle(Font.ITALIC);
+            
         }
         return boxPassword;
     }
 
     public JLabel getLinkRegistro() {
         if (linkRegistro == null) {
-            linkRegistro = new JLabel("!Registrate Aqui¡");
+            linkRegistro = new JLabel("!Registrate Aqui�");
             linkRegistro.setName("!Registrate Aqui¡");
             linkRegistro.setBounds(185, 650, 150, 20);
             linkRegistro.setBorder(BorderFactory.createEmptyBorder());
